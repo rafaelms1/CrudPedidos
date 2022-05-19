@@ -1,0 +1,101 @@
+﻿
+@model IEnumerable<CrudPedidos.Models.Pedido>
+
+@{
+    ViewData["Title"] = "Pedidos";
+
+
+}
+
+
+
+<div class=alert-danger>@TempData["Mensagem"]</div>
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Novo Pedido</a>
+</p>
+<table id= "tb1" class="table table-striped table-hover">
+    <thead>
+        <tr class="success">
+            <th>#</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome_Produto)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Valor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Desconto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorTotal)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Data_Vencimento)
+            </th>
+
+               <th>Ações</th>
+           
+        </tr>
+    </thead>
+
+    <tbody>
+@foreach (var item in Model) {
+        <tr id="idData">
+             <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome_Produto)
+            </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.Valor)
+            </td>
+              <td>
+                @Html.DisplayFor(modelItem => item.Desconto)
+            </td>
+  
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorTotal)
+            </td>
+            <td id="data">
+                @Html.DisplayFor(modelItem => item.Data_Vencimento)
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Excluir</a> |
+                <a asp-action="Desconto" onclick="Desconto" asp-route-id="@item.Id" class="btn btn-info">Desconto</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<script type="text/javascript">
+
+    function Colorir(valor){
+        alert("OI");
+        $('tb1 tbody tr').each(function(i)){
+            tr =$(this);
+            tr.children('td').removeClass('Colorir');
+            valor =tr.children('td:eq(5)').html();
+            if(valor<Date.now){
+                tr.children('td').addClass('Colorir');
+             
+            }
+        });
+    }
+</script>
+
+ 
+
+
+<style type="text/css">
+.colorir{
+   color:red
+}
+</style>

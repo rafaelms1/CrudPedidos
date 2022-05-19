@@ -1,0 +1,43 @@
+﻿@model CrudPedidos.Models.Pedido
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+ 
+    <title>@ViewData["Title"]</title>
+
+<div>
+    <h4>Pedido @Html.DisplayFor(model => model.Id) </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome_Produto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nome_Produto)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Data_Vencimento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Data_Vencimento)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success">Editar</a> |
+    <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+</div>
+

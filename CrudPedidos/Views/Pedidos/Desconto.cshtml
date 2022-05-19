@@ -1,0 +1,47 @@
+﻿@model CrudPedidos.Models.Pedido
+
+@{
+    ViewData["Title"] = "Editar";
+
+}
+
+
+
+<h4>Pedido @Html.DisplayFor(model => model.Id) </h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Desconto">
+
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nome_Produto" class="control-label"></label>
+                <input asp-for="Nome_Produto" class="form-control" readonly="readonly   />
+                <span asp-validation-for="Nome_Produto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Data_Vencimento" class="control-label"></label>
+                <input  asp-for="Data_Vencimento" class="form-control"readonly="readonly />
+                <span asp-validation-for="Data_Vencimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Valor" class="control-label"></label>
+                <input  asp-for="Valor" class="form-control" readonly="readonly"/>
+                <label asp-for="Desconto" class="control-label"></label>
+                <input asp-for="Desconto" class="form-control" id="idDesconto" />
+                <br />
+                <div class="alert-danger">@TempData["Mensagem"]</div>
+                <span asp-validation-for="Valor" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" onclick="Desconto" value="Salvar" class="btn btn-success" />
+                 <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+   
+</div>
